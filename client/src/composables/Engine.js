@@ -10,13 +10,13 @@ export default class Engine extends EventTarget {
         this.server = new ColyseusRoom({engine: this})
 
         this.bind()
-        this.three.animate()
+
     }
 
     bind() {
         this.addEventListener('server/player/connect', (e) => {
             console.log(e)
-            this.three.addPlayer(e.detail.player)
+            this.three.addPlayer(e.detail.player, e.detail.sessionId)
         })
     }
 
@@ -26,6 +26,7 @@ export default class Engine extends EventTarget {
                 this.server.room.send('click', {x: e.clientX, y: e.clientY});
             }
         })
+        this.three.animate()
     }
 
 }

@@ -27,9 +27,9 @@ export class MyRoom extends Room<MyRoomState> {
     const player = new Player();
 
     // place Player at a random position
-    player.x = 0
+    player.x = this.getRandomInt(10)
     player.y = 0
-    player.z = 0
+    player.z = this.getRandomInt(10)
 
     // place player in the map of players by its sessionId
     // (client.sessionId is unique per connection!)
@@ -43,6 +43,10 @@ export class MyRoom extends Room<MyRoomState> {
 
   onDispose() {
     console.log("room", this.roomId, "disposing...");
+  }
+
+  getRandomInt(max: number) {
+    return Math.floor(Math.random() * max);
   }
 
 }

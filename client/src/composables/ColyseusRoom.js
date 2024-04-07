@@ -6,6 +6,9 @@ export default class ColyseusRoom {
         this.engine = engine
         this.client = new Client("ws://localhost:2567");
 
+        console.log(this.client.id)
+
+        this.sessionId = null
         this.room = null
         this.playerEntities = {}
 
@@ -13,8 +16,10 @@ export default class ColyseusRoom {
     }
 
     async connect() {
+
         try {
             this.room = await this.client.joinOrCreate("my_room");
+            this.sessionId = this.room.sessionId
             console.log("Joined successfully!");
         } catch (e) {
             console.error(e);

@@ -16,5 +16,11 @@ onMounted(() => {
 <template>
 </template>
 
-<style scoped>
+<style >
+.label {
+  color: #FFF;
+  font-family: sans-serif;
+  padding: 2px;
+  background: rgba( 0, 0, 0, .6 );
+}
 </style>
